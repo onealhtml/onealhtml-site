@@ -29,6 +29,7 @@ canvas {
   height: 100vh;
   position: relative;
   z-index: 2;
+  padding: 0 15px;
 }
 
 .glitch {
@@ -97,12 +98,15 @@ canvas {
 
 .links {
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .links a {
   color: white;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 10px;
   font-size: 1.2em;
   transition: all 0.3s;
   position: relative;
@@ -160,4 +164,35 @@ canvas {
 .soundcloud-info a {
   color: #cccccc;
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .glitch {
+    font-size: 4em;
+  }
+
+  .links a {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .glitch {
+    font-size: 4em;
+    text-shadow: 0 0 3px #0f0, 0 0 6px #0f0, 0 0 9px #0f0, 0 0 12px #0f0;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .links a {
+    margin: 5px 0;
+    font-size: 1.2em;
+  }
+
+  .soundcloud-wrapper {
+    width: 95%;
+  }
 }
