@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>onealhtml</title>
+  <meta name="description" content="onealhtml - Developer portfolio with cyberpunk aesthetic featuring matrix animation and social links"/>
+  <meta name="keywords" content="onealhtml, developer, portfolio, matrix, cyberpunk, web development"/>
+  <meta name="author" content="onealhtml"/>
+  <meta name="theme-color" content="#00ff00"/>
+
+  <!-- Open Graph tags for social media -->
+  <meta property="og:title" content="onealhtml - Developer Portfolio"/>
+  <meta property="og:description" content="Cyberpunk-inspired developer portfolio with matrix animation"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="pixil-frame-0.png"/>
+
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="onealhtml - Developer Portfolio"/>
+  <meta name="twitter:description" content="Cyberpunk-inspired developer portfolio"/>
+  <meta name="twitter:creator" content="@onealhtml"/>
+
+  <title>onealhtml - Developer Portfolio</title>
   <link rel="icon" href="pixil-frame-0.png" type="image/png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,22 +29,28 @@
 </head>
 
 <body>
-<canvas id="matrix"></canvas>
+<canvas id="matrix" aria-hidden="true"></canvas>
 <div class="container">
-  <h1 class="glitch" data-text="onealhtml">onealhtml</h1>
-  <nav class="links">
-    <a href="https://www.linkedin.com/in/onealhtml" target="_blank" rel="noopener" data-text="LinkedIn">LinkedIn</a>
-    <a href="https://github.com/onealhtml" target="_blank" rel="noopener" data-text="GitHub">GitHub</a>
-    <a href="https://twitter.com/onealhtml" target="_blank" rel="noopener" data-text="Twitter">Twitter</a>
-    <a href="mailto:onealhtml@icloud.com" data-text="Email">Email</a>
-  </nav>
-  <div class="soundcloud-wrapper">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2112413862&color=%230f0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-    <div class="soundcloud-info">
-      <a href="https://soundcloud.com/onealhtml" title="onealhtml" target="_blank" rel="noopener">onealhtml</a> ·
-      <a href="https://soundcloud.com/onealhtml/agua" title="agua" target="_blank" rel="noopener">agua</a>
-    </div>
-  </div>
+  <header>
+    <h1 class="glitch" data-text="onealhtml">onealhtml</h1>
+  </header>
+  <main>
+    <nav class="links" role="navigation" aria-label="Social media links">
+      <a href="https://www.linkedin.com/in/onealhtml" target="_blank" rel="noopener" data-text="LinkedIn" aria-label="Visit LinkedIn profile"><span>LinkedIn</span></a>
+      <a href="https://github.com/onealhtml" target="_blank" rel="noopener" data-text="GitHub" aria-label="Visit GitHub profile"><span>GitHub</span></a>
+      <a href="https://twitter.com/onealhtml" target="_blank" rel="noopener" data-text="Twitter" aria-label="Visit Twitter profile"><span>Twitter</span></a>
+      <a href="mailto:onealhtml@icloud.com" data-text="Email" aria-label="Send email"><span>Email</span></a>
+    </nav>
+    <section class="soundcloud-wrapper" aria-label="Featured music track">
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2112413862&color=%230f0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+              title="SoundCloud player - agua track by onealhtml"></iframe>
+      <div class="soundcloud-info">
+        <a href="https://soundcloud.com/onealhtml" title="onealhtml" target="_blank" rel="noopener">onealhtml</a> ·
+        <a href="https://soundcloud.com/onealhtml/agua" title="agua" target="_blank" rel="noopener">agua</a>
+      </div>
+    </section>
+  </main>
 </div>
 
 <script src="script.js"></script>

@@ -4,12 +4,34 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-color: #0f0;
+  --bg-color: #000;
+  --text-color: #fff;
+  --font-size-base: 1rem;
+  --font-size-title: 5em;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   font-family: 'Archivo Black', 'Arial Black', 'Helvetica Neue', Helvetica, sans-serif;
   overflow: hidden;
   position: relative;
   height: 100vh;
-  background: black;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 canvas {
@@ -19,6 +41,7 @@ canvas {
   width: 100%;
   height: 100%;
   z-index: 1;
+  will-change: auto;
 }
 
 .container {
@@ -33,13 +56,14 @@ canvas {
 }
 
 .glitch {
-  color: white;
-  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0, 0 0 20px #0f0;
-  font-size: 5em;
+  color: var(--text-color);
+  text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color), 0 0 15px var(--primary-color), 0 0 20px var(--primary-color);
+  font-size: var(--font-size-title);
   position: relative;
   letter-spacing: -0.1em;
   width: auto;
   margin: 0 auto;
+  will-change: transform;
 }
 
 @keyframes noise-anim {
@@ -60,9 +84,9 @@ canvas {
   content: attr(data-text);
   position: absolute;
   left: 2px;
-  text-shadow: -1px 0 #0f0;
+  text-shadow: -1px 0 var(--primary-color);
   top: 0;
-  color: white;
+  color: var(--text-color);
   background: rgba(0, 0, 0, 0);
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
@@ -87,9 +111,9 @@ canvas {
   content: attr(data-text);
   position: absolute;
   left: -2px;
-  text-shadow: 1px 0 #0f0;
+  text-shadow: 1px 0 var(--primary-color);
   top: 0;
-  color: white;
+  color: var(--text-color);
   background: rgba(0, 0, 0, 0);
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
@@ -97,60 +121,112 @@ canvas {
 }
 
 .links {
-  margin-top: 20px;
+  margin-top: var(--spacing-md);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: var(--spacing-sm);
 }
 
 .links a {
-  color: white;
+  color: var(--text-color);
   text-decoration: none;
-  margin: 10px;
+  padding: 12px 20px;
   font-size: 1.2em;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   position: relative;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  border-radius: 12px;
+  background: rgba(0, 255, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 15px rgba(0, 255, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
 
-.links a:hover {
-  color: #0f0;
-}
-
-.links a:hover::before,
-.links a:hover::after {
-  content: attr(data-text);
+.links a::before {
+  content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  background: black;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .links a:hover::before {
-  left: 2px;
-  text-shadow: -1px 0 red;
-  animation: noise-anim 2s infinite linear alternate-reverse;
+  left: 100%;
 }
 
-.links a:hover::after {
-  left: -2px;
-  text-shadow: 1px 0 blue;
-  animation: noise-anim-2 3s infinite linear alternate-reverse;
+.links a span {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
+
+.links a:hover span {
+  text-shadow: 0 0 8px var(--primary-color);
+  animation: textPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 8px var(--primary-color);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 12px var(--primary-color), 0 0 20px var(--primary-color);
+  }
+}
+
+.links a:hover,
+.links a:focus {
+  color: var(--primary-color);
+  border-color: rgba(0, 255, 0, 0.6);
+  background: rgba(0, 255, 0, 0.2);
+  outline: none;
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 25px rgba(0, 255, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.links a:focus {
+  box-shadow:
+    0 0 0 2px var(--primary-color),
+    0 8px 25px rgba(0, 255, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Removendo o efeito glitch dos botões - mantendo apenas o glassmorphism limpo */
 
 .soundcloud-wrapper {
-  margin-top: 20px;
+  margin-top: var(--spacing-md);
   width: 100%;
   max-width: 600px;
-  background: black;
-  padding: 10px;
-  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: var(--spacing-sm);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.soundcloud-wrapper iframe {
+  border-radius: 4px;
 }
 
 .soundcloud-info {
-  margin-top: 5px;
-  font-size: 10px;
+  margin-top: 8px;
+  font-size: 11px;
   color: #cccccc;
   line-break: anywhere;
   word-break: normal;
@@ -164,22 +240,33 @@ canvas {
 .soundcloud-info a {
   color: #cccccc;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
+.soundcloud-info a:hover,
+.soundcloud-info a:focus {
+  color: var(--primary-color);
+}
+
+/* Improved responsive design */
 @media (max-width: 768px) {
-  .glitch {
-    font-size: 4em;
+  :root {
+    --font-size-title: 4em;
   }
 
   .links a {
     font-size: 1.1em;
+    padding: 6px 10px;
   }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --font-size-title: 3.5em;
+  }
+
   .glitch {
-    font-size: 4em;
-    text-shadow: 0 0 3px #0f0, 0 0 6px #0f0, 0 0 9px #0f0, 0 0 12px #0f0;
+    text-shadow: 0 0 3px var(--primary-color), 0 0 6px var(--primary-color), 0 0 9px var(--primary-color), 0 0 12px var(--primary-color);
   }
 
   .links {
@@ -190,9 +277,47 @@ canvas {
   .links a {
     margin: 5px 0;
     font-size: 1.2em;
+    width: 200px;
+    text-align: center;
   }
 
   .soundcloud-wrapper {
     width: 95%;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --font-size-title: 3em;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glitch {
+    text-shadow: none;
+    color: #fff;
+  }
+
+  .links a {
+    border: 2px solid #fff;
+  }
+}
+
+/* Print styles */
+@media print {
+  canvas {
+    display: none;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
   }
 }
