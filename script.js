@@ -15,7 +15,7 @@ function setupCanvas() {
 }
 
 // Caracteres japoneses katakana e símbolos para aspecto mais autêntico do Matrix
-var letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
 letters = letters.split('');
 
 var fontSize, columns, drops;
@@ -75,3 +75,52 @@ function draw() {
 setInterval(draw, 33);
 
 window.addEventListener('resize', setupCanvas);
+
+// --- Typing Animation ---
+document.addEventListener('DOMContentLoaded', () => {
+  const typingTextElement = document.getElementById('typing-text');
+  const cursorElement = document.querySelector('.cursor');
+  const words = [
+    "Software Engineer",
+    "Music Producer",
+    "AI Expecialist",
+  ];
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const currentWord = words[wordIndex];
+    const text = isDeleting ? currentWord.substring(0, charIndex - 1) : currentWord.substring(0, charIndex + 1);
+
+    typingTextElement.textContent = text;
+    typingTextElement.setAttribute('data-text', text); // Update for glitch effect
+
+    if (isDeleting) {
+      charIndex--;
+    } else {
+      charIndex++;
+    }
+
+    // Switch to deleting when word is fully typed
+    if (!isDeleting && charIndex === currentWord.length) {
+      isDeleting = true;
+      setTimeout(type, 1000); // Pause before deleting - reduzido de 2000 para 1000
+      return;
+    }
+
+    // Switch to next word when fully deleted
+    if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(type, 300); // Pause before typing next word - reduzido de 500 para 300
+      return;
+    }
+
+    const typingSpeed = isDeleting ? 50 : 80; // Velocidades muito mais rápidas: 100->50 e 200->80
+    setTimeout(type, typingSpeed);
+  }
+
+  type(); // Start the animation
+});
