@@ -32,6 +32,16 @@ body {
   height: 100vh;
   background: var(--bg-color);
   color: var(--text-color);
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 canvas {
@@ -44,6 +54,30 @@ canvas {
   will-change: auto;
 }
 
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Camada de vidro embaçado sobre o fundo */
+#glass-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(3px) saturate(300%);
+  -webkit-backdrop-filter: blur(3px) saturate(300%);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -51,8 +85,20 @@ canvas {
   justify-content: center;
   height: 100vh;
   position: relative;
-  z-index: 2;
+  z-index: 10;
   padding: 0 15px;
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .glitch {
@@ -64,6 +110,13 @@ canvas {
   width: auto;
   margin: 0 auto;
   will-change: transform;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+.glitch:hover {
+  text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 30px var(--primary-color), 0 0 40px var(--primary-color);
+  transform: scale(1.02);
 }
 
 @keyframes noise-anim {
@@ -227,42 +280,11 @@ canvas {
   overflow: hidden;
 }
 
-.links a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.links a:hover::before {
-  left: 100%;
-}
-
 .links a span {
   position: relative;
-  z-index: 1;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   transition: all 0.3s ease;
-}
-
-.links a:hover span {
-  text-shadow: 0 0 8px var(--primary-color);
-  animation: textPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes textPulse {
-  0%, 100% {
-    transform: scale(1);
-    text-shadow: 0 0 8px var(--primary-color);
-  }
-  50% {
-    transform: scale(1.05);
-    text-shadow: 0 0 12px var(--primary-color), 0 0 20px var(--primary-color);
-  }
 }
 
 .links a:hover,
@@ -299,6 +321,16 @@ canvas {
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeIn 1.2s ease-in 0.3s backwards;
+}
+
+.soundcloud-wrapper:hover {
+  border-color: rgba(0, 255, 0, 0.4);
+  box-shadow:
+    0 12px 40px rgba(0, 255, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 .soundcloud-wrapper iframe {

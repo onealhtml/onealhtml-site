@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const cursorElement = document.querySelector('.cursor');
   const words = [
     "Software Engineer",
+    "AI Expecialist", 
     "Music Producer",
-    "AI Expecialist",
   ];
 
   let wordIndex = 0;
