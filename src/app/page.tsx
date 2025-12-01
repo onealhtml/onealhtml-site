@@ -3,6 +3,7 @@ import { GlitchText } from '@/components/GlitchText';
 import { TypingAnimation } from '@/components/TypingAnimation';
 import { SocialLinks } from '@/components/SocialLinks';
 import { SoundCloudEmbed } from '@/components/SoundCloudEmbed';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export default function Home() {
   const words = [
@@ -13,7 +14,9 @@ export default function Home() {
 
   return (
     <>
-      <MatrixRain />
+      <ErrorBoundary fallback={<div className="fixed inset-0 bg-black z-0" />}>
+        <MatrixRain />
+      </ErrorBoundary>
       {/* Glass overlay with enhanced blur */}
       <div 
         id="glass-overlay" 
@@ -33,11 +36,6 @@ export default function Home() {
           <SocialLinks />
           <SoundCloudEmbed />
         </main>
-        
-        {/* Subtle footer */}
-        <footer className="absolute bottom-4 text-center text-primary/30 text-xs tracking-widest uppercase">
-          <span className="animate-pulse">2025</span>
-        </footer>
       </div>
     </>
   );

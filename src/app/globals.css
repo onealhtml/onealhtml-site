@@ -11,14 +11,14 @@
   --color-cyber-purple: #bf00ff;
   
   /* Shadows */
-  --shadow-neon: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0, 0 0 20px #0f0;
-  --shadow-neon-hover: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0, 0 0 50px #0f0;
+  --shadow-neon: 0 0 5px var(--color-primary), 0 0 10px var(--color-primary), 0 0 15px var(--color-primary), 0 0 20px var(--color-primary);
+  --shadow-neon-hover: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary), 0 0 30px var(--color-primary), 0 0 40px var(--color-primary), 0 0 50px var(--color-primary);
   --shadow-link: 0 4px 15px rgba(0, 255, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   --shadow-link-hover: 0 8px 30px rgba(0, 255, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 20px rgba(0, 255, 0, 0.2);
   --shadow-soundcloud: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   --shadow-soundcloud-hover: 0 16px 48px rgba(0, 255, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 30px rgba(0, 255, 0, 0.1);
-  --shadow-cursor: 0 0 5px #0f0, 0 0 10px rgba(0, 255, 0, 0.5);
-  --shadow-cursor-glow: 0 0 10px #0f0, 0 0 20px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.4);
+  --shadow-cursor: 0 0 5px var(--color-primary), 0 0 10px rgba(0, 255, 0, 0.5);
+  --shadow-cursor-glow: 0 0 10px var(--color-primary), 0 0 20px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.4);
   
   /* Animations */
   --animate-fade-in: fade-in 1s ease-out;
@@ -27,9 +27,6 @@
   --animate-cursor-glow: cursor-glow 2s ease-in-out infinite alternate;
   --animate-noise-1: noise-1 4s infinite linear alternate-reverse;
   --animate-noise-2: noise-2 6s infinite linear alternate-reverse;
-  --animate-pulse-neon: pulse-neon 2s ease-in-out infinite;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
   
   @keyframes fade-in {
     from { opacity: 0; transform: scale(0.98); }
@@ -55,27 +52,6 @@
   @keyframes cursor-glow {
     0% { box-shadow: var(--shadow-cursor); }
     100% { box-shadow: var(--shadow-cursor-glow); }
-  }
-  
-  @keyframes pulse-neon {
-    0%, 100% { 
-      text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0, 0 0 20px #0f0;
-      filter: brightness(1);
-    }
-    50% { 
-      text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0, 0 0 50px #0f0;
-      filter: brightness(1.1);
-    }
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  @keyframes glow-pulse {
-    0%, 100% { box-shadow: var(--shadow-link); }
-    50% { box-shadow: var(--shadow-link-hover); }
   }
   
   @keyframes noise-1 {
@@ -105,11 +81,6 @@
     90% { clip: rect(30px, 9999px, 50px, 0); }
     100% { clip: rect(50px, 9999px, 70px, 0); }
   }
-  
-  @keyframes scanline {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100vh); }
-  }
 }
 
 /* Reduced motion preference */
@@ -131,7 +102,7 @@
   /* Scanline effect overlay */
   body::before {
     content: '';
-    @apply fixed inset-0 pointer-events-none z-[100];
+    @apply fixed inset-0 pointer-events-none z-50;
     background: repeating-linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.03) 0px,
@@ -144,7 +115,7 @@
   /* Vignette effect */
   body::after {
     content: '';
-    @apply fixed inset-0 pointer-events-none z-[99];
+    @apply fixed inset-0 pointer-events-none z-40;
     background: radial-gradient(ellipse at center, transparent 0%, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
   }
 }
