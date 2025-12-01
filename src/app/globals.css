@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #0f0;
+  --bg-color: #000;
+  --text-color: #fff;
+  --font-size-base: 1rem;
+  --font-size-title: 5em;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: 'Archivo Black', 'Arial Black', 'Helvetica Neue', Helvetica, sans-serif;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#glass-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(3px) saturate(300%);
+  -webkit-backdrop-filter: blur(3px) saturate(300%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  :root {
+    --font-size-title: 4em;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-title: 3.5em;
+  }
+}
+
