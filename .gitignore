@@ -43,3 +43,6 @@ next-env.d.ts
 # old site backup
 /old-site
 
+.next
+node_modules
+

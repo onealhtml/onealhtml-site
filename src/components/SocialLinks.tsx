@@ -31,7 +31,7 @@ const links: SocialLink[] = [
     ),
   },
   {
-    href: 'https://x.com/onaboreal',
+    href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     label: 'Twitter',
     ariaLabel: 'Visit Twitter profile',
     icon: (
