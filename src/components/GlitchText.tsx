@@ -1,7 +1,6 @@
 'use client';
 
 import { memo } from 'react';
-import styles from './GlitchText.module.css';
 
 interface GlitchTextProps {
   text: string;
@@ -16,7 +15,7 @@ export const GlitchText = memo(function GlitchText({
 }: GlitchTextProps) {
   return (
     <Component
-      className={`${styles.glitch} ${className}`}
+      className={`glitch ${className}`}
       data-text={text}
     >
       {text}

@@ -1,7 +1,6 @@
 'use client';
 
 import { useMatrixRain } from '@/hooks/useMatrixRain';
-import styles from './MatrixRain.module.css';
 
 export function MatrixRain() {
   const canvasRef = useMatrixRain();
@@ -10,7 +9,7 @@ export function MatrixRain() {
     <canvas
       ref={canvasRef}
       id="matrix"
-      className={styles.matrix}
+      className="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none"
       aria-hidden="true"
     />
   );

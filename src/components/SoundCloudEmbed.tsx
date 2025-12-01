@@ -1,11 +1,10 @@
 'use client';
 
 import { memo } from 'react';
-import styles from './SoundCloudEmbed.module.css';
 
 export const SoundCloudEmbed = memo(function SoundCloudEmbed() {
   return (
-    <section className={styles.soundcloudWrapper} aria-label="Featured music track">
+    <section className="soundcloud-wrapper" aria-label="Featured music track">
       <iframe
         width="100%"
         height="166"
@@ -14,7 +13,7 @@ export const SoundCloudEmbed = memo(function SoundCloudEmbed() {
         title="SoundCloud player - agua track by onealhtml"
         style={{ border: 'none' }}
       />
-      <div className={styles.soundcloudInfo}>
+      <div className="soundcloud-info">
         <a
           href="https://soundcloud.com/onealhtml"
           title="onealhtml"
