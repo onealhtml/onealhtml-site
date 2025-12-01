@@ -1,13 +1,24 @@
-# my website 🌐✨
+# onealhtml
 
-## features 🎉
+Cyberpunk portfolio with Matrix rain, glitch effects, and neon aesthetics.
 
-- 🎵 background music toggle
-- 🧑‍💻 matrix-style animation
-- 📱 responsive layout
+## Stack
 
-## technologies used 🛠️
+- Next.js 16 + React 19 + TypeScript
+- Tailwind CSS 4
 
-- HTML
-- CSS
-- JavaScript
+## Run
+
+```bash
+npm install
+npm run dev
+```
+
+## Deploy
+
+Push to GitHub → Deploy on [Vercel](https://vercel.com)
+
+## Author
+
+[@onealhtml](https://github.com/onealhtml)
+
