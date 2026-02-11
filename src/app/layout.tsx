@@ -9,22 +9,56 @@ const archivoBlack = Archivo_Black({
 });
 
 export const metadata: Metadata = {
-  title: "onealhtml - Developer Portfolio",
-  description: "Cyberpunk-inspired developer portfolio with matrix animation",
-  keywords: ["onealhtml", "developer", "portfolio", "matrix", "cyberpunk", "web development"],
-  authors: [{ name: "onealhtml" }],
-  metadataBase: new URL('https://onealhtml.com'),
+  title: {
+    default: "onealhtml - Software Engineer & Music Producer",
+    template: "%s | onealhtml"
+  },
+  description: "Portfolio of onealhtml - Software Engineer, AI Specialist, and Music Producer. Cyberpunk-inspired developer portfolio with matrix animation.",
+  keywords: ["onealhtml", "software engineer", "AI specialist", "music producer", "developer", "portfolio", "web development", "fullstack", "typescript", "react", "nextjs"],
+  authors: [{ name: "onealhtml", url: "https://onealhtml.dev" }],
+  creator: "onealhtml",
+  publisher: "onealhtml",
+  metadataBase: new URL('https://onealhtml.dev'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: "onealhtml - Developer Portfolio",
-    description: "Cyberpunk-inspired developer portfolio with matrix animation",
+    title: "onealhtml - Software Engineer & Music Producer",
+    description: "Portfolio of onealhtml - Software Engineer, AI Specialist, and Music Producer",
+    url: "https://onealhtml.dev",
+    siteName: "onealhtml",
+    locale: "en_US",
     type: "website",
-    images: ["/pixil-frame-0.png"],
+    images: [
+      {
+        url: "/pixil-frame-0.png",
+        width: 1200,
+        height: 630,
+        alt: "onealhtml portfolio"
+      }
+    ],
   },
   twitter: {
-    card: "summary",
-    title: "onealhtml - Developer Portfolio",
-    description: "Cyberpunk-inspired developer portfolio",
+    card: "summary_large_image",
+    title: "onealhtml - Software Engineer & Music Producer",
+    description: "Portfolio of onealhtml - Software Engineer, AI Specialist, and Music Producer",
     creator: "@onealhtml",
+    images: ["/pixil-frame-0.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Adicione seu Google Search Console verification code aqui quando obtiver
+    // google: 'your-google-verification-code',
   },
 };
 
@@ -41,8 +75,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "onealhtml",
+    "url": "https://onealhtml.dev",
+    "sameAs": [
+      "https://twitter.com/onealhtml",
+      "https://github.com/onealhtml",
+      "https://soundcloud.com/onealhtml"
+    ],
+    "jobTitle": "Software Engineer",
+    "description": "Software Engineer, AI Specialist, and Music Producer",
+    "knowsAbout": ["Software Engineering", "Artificial Intelligence", "Web Development", "Music Production"],
+  };
+
   return (
     <html lang="en-us">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={archivoBlack.className}>
         {children}
       </body>

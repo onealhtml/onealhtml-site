@@ -1,0 +1,7 @@
+# robots.txt for onealhtml.dev
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://onealhtml.dev/sitemap.xml
+
