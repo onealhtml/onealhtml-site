@@ -55,31 +55,31 @@
   }
   
   @keyframes noise-1 {
-    0% { clip: rect(42px, 9999px, 44px, 0); }
-    10% { clip: rect(20px, 9999px, 40px, 0); }
-    20% { clip: rect(40px, 9999px, 60px, 0); }
-    30% { clip: rect(80px, 9999px, 100px, 0); }
-    40% { clip: rect(10px, 9999px, 30px, 0); }
-    50% { clip: rect(20px, 9999px, 40px, 0); }
-    60% { clip: rect(40px, 9999px, 60px, 0); }
-    70% { clip: rect(80px, 9999px, 100px, 0); }
-    80% { clip: rect(10px, 9999px, 30px, 0); }
-    90% { clip: rect(20px, 9999px, 40px, 0); }
-    100% { clip: rect(40px, 9999px, 60px, 0); }
+    0%  { clip-path: inset(40% 0 55% 0); }
+    10% { clip-path: inset(15% 0 65% 0); }
+    20% { clip-path: inset(30% 0 45% 0); }
+    30% { clip-path: inset(60% 0 25% 0); }
+    40% { clip-path: inset(5%  0 75% 0); }
+    50% { clip-path: inset(20% 0 55% 0); }
+    60% { clip-path: inset(45% 0 35% 0); }
+    70% { clip-path: inset(70% 0 10% 0); }
+    80% { clip-path: inset(10% 0 70% 0); }
+    90% { clip-path: inset(25% 0 50% 0); }
+    100%{ clip-path: inset(35% 0 45% 0); }
   }
   
   @keyframes noise-2 {
-    0% { clip: rect(52px, 9999px, 54px, 0); }
-    10% { clip: rect(30px, 9999px, 50px, 0); }
-    20% { clip: rect(50px, 9999px, 70px, 0); }
-    30% { clip: rect(90px, 9999px, 110px, 0); }
-    40% { clip: rect(20px, 9999px, 40px, 0); }
-    50% { clip: rect(30px, 9999px, 50px, 0); }
-    60% { clip: rect(50px, 9999px, 70px, 0); }
-    70% { clip: rect(90px, 9999px, 110px, 0); }
-    80% { clip: rect(20px, 9999px, 40px, 0); }
-    90% { clip: rect(30px, 9999px, 50px, 0); }
-    100% { clip: rect(50px, 9999px, 70px, 0); }
+    0%  { clip-path: inset(50% 0 40% 0); }
+    10% { clip-path: inset(25% 0 60% 0); }
+    20% { clip-path: inset(55% 0 30% 0); }
+    30% { clip-path: inset(75% 0 15% 0); }
+    40% { clip-path: inset(20% 0 65% 0); }
+    50% { clip-path: inset(30% 0 50% 0); }
+    60% { clip-path: inset(60% 0 25% 0); }
+    70% { clip-path: inset(80% 0 5%  0); }
+    80% { clip-path: inset(15% 0 68% 0); }
+    90% { clip-path: inset(35% 0 48% 0); }
+    100%{ clip-path: inset(48% 0 38% 0); }
   }
 }
 
@@ -136,7 +136,7 @@
 .glitch::after {
   content: attr(data-text);
   @apply absolute top-0 text-white overflow-hidden bg-transparent;
-  clip: rect(0, 900px, 0, 0);
+  clip-path: inset(0 0 100% 0);
 }
 
 .glitch::after {
@@ -166,7 +166,7 @@
 .typing-text::after {
   content: attr(data-text);
   @apply absolute top-0 left-0 w-full h-full text-white overflow-hidden bg-transparent;
-  clip: rect(0, 900px, 0, 0);
+  clip-path: inset(0 0 100% 0);
 }
 
 .typing-text::after {
