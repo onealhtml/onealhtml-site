@@ -75,7 +75,7 @@ export const SocialLinks = memo(function SocialLinks() {
         >
           <span className="relative inline-flex items-center gap-2 transition-all duration-300 group-hover:gap-3">
             {link.icon}
-            <span className="font-medium">{link.label}</span>
+            <span>{link.label}</span>
           </span>
         </a>
       ))}

@@ -1,12 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo_Black } from "next/font/google";
 import "./globals.css";
 
-const archivoBlack = Archivo_Black({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -98,7 +92,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={archivoBlack.className}>
+      <body>
         {children}
       </body>
     </html>
