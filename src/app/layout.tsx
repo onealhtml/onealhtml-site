@@ -1,5 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const arialBlack = localFont({
+  src: "../../public/fonts/arial-black.woff2",
+  weight: "900",
+  style: "normal",
+  display: "swap",
+});
 
 
 export const metadata: Metadata = {
@@ -92,7 +100,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
+      <body className={arialBlack.className}>
         {children}
       </body>
     </html>

@@ -96,7 +96,7 @@
 @layer base {
   body {
     @apply overflow-hidden relative h-screen bg-black text-white m-0 p-0 animate-fade-in;
-    font-family: 'Arial Black', 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: 'Arial Black', sans-serif;
   }
   
   /* Scanline effect overlay */
@@ -152,7 +152,7 @@
 /* Typing container */
 .typing-container {
   @apply flex items-center justify-center mt-4 mb-6 sm:mt-6 sm:mb-8 md:mt-8 md:mb-10 h-[50px] sm:h-[60px] md:h-[70px] text-[1.3em] sm:text-[1.6em] md:text-[2em] lg:text-[2.3em] text-primary;
-  font-family: 'Arial Black', sans-serif;
+  font-family: 'Arial Black', 'Archivo Black', sans-serif;
   text-shadow: var(--shadow-neon);
   filter: drop-shadow(0 0 12px var(--color-neon-glow));
 }
@@ -191,7 +191,7 @@
 /* Social links */
 .social-link {
   @apply text-white no-underline text-sm md:text-base transition-all duration-300 ease-out relative overflow-hidden rounded-2xl py-2.5 px-4 md:py-3 md:px-5 border border-primary/20 bg-primary/5 backdrop-blur-[12px] tracking-[-0.1em];
-  font-family: 'Arial Black', sans-serif;
+  font-family: 'Arial Black', 'Archivo Black', sans-serif;
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-link);
 }
