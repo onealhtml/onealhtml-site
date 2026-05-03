@@ -22,8 +22,8 @@ export const SoundCloudEmbed = memo(function SoundCloudEmbed() {
         width="100%"
         height="166"
         allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2246286959&color=%230f0&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false"
-        title="SoundCloud player - Water (Instrumental) track by onealhtml"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2313614015&color=%230f0&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false"
+        title="SoundCloud player - Tension track by onealhtml"
         style={{ border: 'none', display: isLoaded ? 'block' : 'none' }}
         onLoad={() => setIsLoaded(true)}
       />
