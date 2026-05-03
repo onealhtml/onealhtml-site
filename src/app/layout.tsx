@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const arialBlack = localFont({
@@ -105,6 +106,7 @@ export default function RootLayout({
       <body className={arialBlack.className}>
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
