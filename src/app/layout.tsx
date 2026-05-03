@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const arialBlack = localFont({
@@ -99,9 +100,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <title></title>
       </head>
       <body className={arialBlack.className}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
